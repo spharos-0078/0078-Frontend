@@ -10,26 +10,26 @@ export default function BottomNavbar() {
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-[#0A0A1A] h-20 flex items-center justify-between px-6 z-50">
       <div className="flex flex-1 justify-between max-w-[320px] mx-auto items-center">
-        <Link href="/">
+        <Link href="/main">
           <HomeIcon isActive={true} />
         </Link>
         <button className="flex flex-col items-center text-white/40">
-          <Link href="/">
+          <Link href="/bid">
             <CardIcon />
           </Link>
         </button>
         <button className="relative -mt-8 bg-[#00FF88] rounded-full w-16 h-16 flex items-center justify-center shadow-lg border-4 border-[#0A0A1A]">
-          <Link href="/">
+          <Link href="/main">
             <HomeIcon isActive={true} />
           </Link>
         </button>
         {/* Stats */}
-        <Link href="/">
+        <Link href="/piece">
           <ChartIcon />
         </Link>
 
         {/* Profile */}
-        <Link href="/">
+        <Link href="/mypage">
           <MyPageIcon />
         </Link>
       </div>
