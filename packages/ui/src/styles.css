@@ -1,1 +1,7 @@
 @import "tailwindcss";
+@import "@repo/ui/styles.css";
+@import "@repo/tailwind-config";
+
+@theme {
+  --color-custom-text-1000: #0f7852;
+}
