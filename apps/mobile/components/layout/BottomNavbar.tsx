@@ -13,7 +13,7 @@ export default function BottomNavbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-background h-20 flex items-center justify-between px-8 z-50">
+    <nav className="fixed -bottom-0.5 left-0 right-0 bg-background h-20 flex items-center justify-between px-8 z-50">
       <ul className="flex flex-1 justify-between max-w-[480px] mx-auto items-center">
         <li>
           <Link href="/main" className="relative">
