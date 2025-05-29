@@ -7,10 +7,10 @@ export default function AlertButton({
   isActive?: boolean;
 }) {
   return (
-    <div className="relative w-[52px] h-[53px] flex items-center justify-center bg-[#00FC83] rounded-full">
+    <div className="relative w-14 h-14 flex items-center justify-center bg-custom-green rounded-full">
       <AlertIcon />
       {isActive && (
-        <span className="absolute top-0 right-0 w-4 h-4 bg-[#FF3E41] rounded-full border-2 border-white" />
+        <span className="absolute top-0 right-[3px] w-3 h-3 bg-custom-red rounded-full border-2 border-background" />
       )}
     </div>
   );
