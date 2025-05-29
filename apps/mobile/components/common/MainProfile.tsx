@@ -23,14 +23,12 @@ export default function MainProfile({
             />
           </div>
           <div>
-            <div className="text-xs text-gray-400">Good Morning!</div>
-            <div className="text-base font-semibold">{userName}</div>
+            <p className="text-xs text-custom-gray-200">Good Morning!</p>
+            <p className="text-base font-semibold">{userName}</p>
           </div>
         </>
       ) : (
-        <div className="text-base font-semibold text-gray-500">
-          로그인을 해주세요!
-        </div>
+        <p className="text-base font-semibold">로그인을 해주세요!</p>
       )}
     </div>
   );
