@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Button() {
-  return <div className="bg-custom-purple-1000">Button</div>;
+  return <div className="bg-custom-text-1000">Button</div>;
 }
