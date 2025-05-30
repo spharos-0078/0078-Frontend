@@ -24,9 +24,9 @@ export default function BottomNavbar() {
           </Link>
         </li>
         <li>
-          <Link href="/bid" className="relative">
-            <CardIcon isActive={pathname === "/bid"} />
-            {pathname === "/bid" && (
+          <Link href="/funding" className="relative">
+            <CardIcon isActive={pathname === "/funding"} />
+            {pathname === "/funding" && (
               <div className="absolute left-1/2 -translate-x-1/2 -bottom-3 w-1.5 h-1.5 rounded-full bg-white" />
             )}
           </Link>
