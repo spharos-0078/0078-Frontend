@@ -1,163 +1,90 @@
-"use client";
-
-import { useState } from "react";
-
+import PageWrapper from "@/components/layout/PageWrapper";
+import Image from "next/image";
+import BackButton from "@/components/common/BackButton";
+import InfoCardLayout from "@/components/layout/InfoCardLayout";
+import ClockIcon from "@repo/ui/Icons/ClockIcon";
+import TempPriceIcon from "@repo/ui/Icons/TempPriceIcon";
+import ProductTitleWrapper from "@/components/layout/ProductTitleWrapper";
+import TabLayout from "@/components/layout/TabLayout";
 // 헤더 컴포넌트
 function Header({ title }: { title: string }) {
   return (
-    <div className="flex items-center p-4">
-      <button className="mr-2">
-        <span className="material-icons text-white">arrow_back</span>
-      </button>
-      <h1 className="text-white text-lg font-semibold mx-auto">{title}</h1>
-    </div>
+    <header className="flex items-center">
+      <BackButton />
+    </header>
   );
 }
 
 // 작품 카드 컴포넌트
-function ArtworkCard({
-  imageUrl,
-  title,
-  subtitle,
-}: {
-  imageUrl: string;
-  title: string;
-  subtitle: string;
-}) {
+function ArtworkCard({ imageUrl, title }: { imageUrl: string; title: string }) {
   return (
-    <div className="flex justify-center p-4">
-      <div className="bg-white rounded-xl overflow-hidden w-80">
-        <img src={imageUrl} alt={title} className="w-full h-80 object-cover" />
-        <div className="p-4">
-          <div className="text-center font-bold">{title}</div>
-          <div className="text-center text-xs text-gray-500">{subtitle}</div>
-        </div>
+    <div className="mx-auto relative w-full">
+      <ProductTitleWrapper className="text-xl text-white text-center">
+        Girl with the Pearl Earring
+      </ProductTitleWrapper>
+      <div className="relative rounded-xl overflow-hidden w-full h-[60vh]">
+        <Image
+          src={imageUrl}
+          alt={title}
+          fill={true}
+          className="object-contain"
+        />
       </div>
-    </div>
-  );
-}
-
-// 판매자 정보 컴포넌트
-function SellerInfo({
-  name,
-  description,
-  avatarUrl,
-  isVerified,
-}: {
-  name: string;
-  description: string;
-  avatarUrl: string;
-  isVerified?: boolean;
-}) {
-  return (
-    <div className="flex items-center bg-black px-4 py-2">
-      <img src={avatarUrl} alt={name} className="w-10 h-10 rounded-full mr-3" />
-      <div>
-        <div className="flex items-center">
-          <span className="text-white font-semibold">{name}</span>
-          {isVerified && (
-            <span className="ml-1 text-blue-500 material-icons text-sm">
-              check_circle
-            </span>
-          )}
-        </div>
-        <div className="text-xs text-gray-400">{description}</div>
-      </div>
-      <button className="ml-auto">
-        <span className="material-icons text-white">bookmark_border</span>
-      </button>
-    </div>
-  );
-}
-
-// 결제 버튼 컴포넌트
-function CheckoutButton() {
-  return (
-    <div className="px-4 mt-2">
-      <button className="w-full bg-green-400 text-black font-semibold py-3 rounded-full text-lg shadow">
-        Checkout
-      </button>
     </div>
   );
 }
 
 // 가격 및 남은 시간 컴포넌트
-function PriceInfo({ price, timeLeft }: { price: string; timeLeft: string }) {
+function InfoCards() {
   return (
-    <div className="flex justify-between px-8 py-4 text-white text-lg font-bold">
-      <div>{price}</div>
-      <div>{timeLeft}</div>
+    <div className="flex justify-around gap-x-3">
+      <InfoCardLayout
+        className="h-12 border-white border-1"
+        title="Highest Bid"
+        value="15,800,000"
+        icon={<TempPriceIcon />}
+      />
+      <InfoCardLayout
+        className="h-12 border-white border-1"
+        title="Time Left"
+        value="2h 4m 52s"
+        icon={<ClockIcon />}
+      />
     </div>
   );
-}
-
-// 탭 메뉴 컴포넌트
-function TabMenu({
-  tabs,
-  selected,
-  onSelect,
-}: {
-  tabs: string[];
-  selected: number;
-  onSelect: (idx: number) => void;
-}) {
-  return (
-    <div className="flex border-b border-gray-700 px-4">
-      {tabs.map((tab, idx) => (
-        <button
-          key={tab}
-          className={`flex-1 py-2 text-center ${selected === idx ? "text-white border-b-2 border-white" : "text-gray-500"}`}
-          onClick={() => onSelect(idx)}
-        >
-          {tab}
-        </button>
-      ))}
-    </div>
-  );
-}
-
-// 탭 컨텐츠 컴포넌트
-function TabContent({ children }: { children: React.ReactNode }) {
-  return <div className="px-4 py-3 text-white text-sm">{children}</div>;
 }
 
 // 메인 페이지 컴포넌트
 export default function FundingPage() {
-  const [selectedTab, setSelectedTab] = useState(0);
-
   return (
-    <div className="bg-black min-h-screen">
+    <PageWrapper>
       <Header title="Girl with the Pearl Earring" />
-      <ArtworkCard
-        imageUrl="/sample-art.jpg"
-        title="KATSUSHIKA HOKUSAI"
-        subtitle="JAPANESE ARTIST, PAINTER AND PRINTMAKER"
-      />
-      <SellerInfo
-        name="Richard Sanchez"
-        description="The best of Picture in one place"
-        avatarUrl="/sample-avatar.jpg"
-        isVerified
-      />
-      <CheckoutButton />
-      <PriceInfo price="15,800,000" timeLeft="21h 41m 52s" />
-      <TabMenu
-        tabs={["Details", "Owners", "Bids", "History"]}
-        selected={selectedTab}
-        onSelect={setSelectedTab}
-      />
-      <TabContent>
-        {selectedTab === 0 && (
-          <div>
-            Lorem ipsum dolor sit amet, consectetur elit. Quisque non elit
-            mauris. Cras euismod, Lorem ipsum metus ac finibus finibus, felis
-            dui suscipit...
-          </div>
-        )}
-        {selectedTab === 1 && <div>Owners content...</div>}
-        {selectedTab === 2 && <div>Bids content...</div>}
-        {selectedTab === 3 && <div>History content...</div>}
-      </TabContent>
-    </div>
+      <div>
+        <ArtworkCard imageUrl="/example.png" title="KATSUSHIKA HOKUSAI" />
+      </div>
+      <InfoCards />
+      <TabLayout tabs={["Details", "Owners", "Bids", "History"]}>
+        <div>
+          Lorem ipsum dolor sit amet, consectetur elit. Quisque non elit mauris.
+          Cras euismod, Lorem ipsum metus ac finibus finibus, felis dui
+          suscipit...
+        </div>
+        <div>
+          Lorem ipsum dolor sit amet, consectetur elit. Quisque non elit mauris.
+          Cras euismod, assaLorem ipsum metus ac finibus finibus, felis dui
+          suscipit...sadasdasda
+        </div>
+        <div>
+          Lorem ipsum dolor sit amet, consectetur elit. Quisque non elit mauris.
+          Cras euismod, Lorem ipsum metus ac finibus finibus, felis dui
+          suscipit...
+        </div>
+        <div>
+          Lorem ipsum dolor sit amet, consectetur elit. Quisque non elit mauris.
+          Cras euismod, Lorem ipsum metus ac finibus finibus, felis dui
+          suscipit...
+        </div>
+      </TabLayout>
+    </PageWrapper>
   );
 }
