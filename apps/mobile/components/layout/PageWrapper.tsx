@@ -8,5 +8,7 @@ export default function PageWrapper({
   children: React.ReactNode;
   className?: string;
 }) {
-  return <div className={cn("p-6 space-y-5", className)}>{children}</div>;
+  return (
+    <div className={cn("px-6 pt-6 space-y-5 pb-24", className)}>{children}</div>
+  );
 }
