@@ -4,12 +4,12 @@ import { cn } from "@repo/ui/lib/utils";
 export default function InfoCardLayout({
   className,
   title,
-  value,
+  children,
   icon,
 }: {
   className?: string;
   title: string;
-  value: string;
+  children: React.ReactNode;
   icon: React.ReactNode;
 }) {
   return (
@@ -22,9 +22,7 @@ export default function InfoCardLayout({
       {icon}
       <div className="space-y-1 text-center">
         <p className="text-xs text-custom-gray-200 leading-none">{title}</p>
-        <p className="text-base font-semibold text-white leading-none">
-          {value}
-        </p>
+        {children}
       </div>
     </div>
   );

@@ -1,12 +1,18 @@
 import React from "react";
-
-export default function Price({ price }: { price: number }) {
+import { cn } from "@repo/ui/lib/utils";
+export default function Price({
+  price,
+  className,
+}: {
+  price: number;
+  className?: string;
+}) {
   return (
-    <div className="text-xl font-bold text-black mt-2">
+    <span className={cn("text-xl font-bold text-black mt-2", className)}>
       {price.toLocaleString("ko-KR", {
         style: "currency",
         currency: "KRW",
       })}
-    </div>
+    </span>
   );
 }

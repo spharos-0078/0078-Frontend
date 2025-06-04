@@ -23,7 +23,7 @@ export default function TabLayout({
         {tabs.map((tab, idx) => (
           <button
             key={tab + idx}
-            className={`py-2 min-w-[${100 / tabs.length}vw] text-center ${selectedTab === idx ? "text-white border-b-2 border-white" : "text-custom-gray-200"}`}
+            className={`py-2 w-[20vw] text-center ${selectedTab === idx ? "text-white border-b-2 border-white" : "text-custom-gray-200"}`}
             onClick={() => onSelect(idx)}
           >
             {tab}

@@ -41,15 +41,21 @@ function InfoCards() {
       <InfoCardLayout
         className="h-12 border-white border-1"
         title="Highest Bid"
-        value="15,800,000"
         icon={<TempPriceIcon />}
-      />
+      >
+        <span className="text-base font-semibold text-white leading-none">
+          15,800,000
+        </span>
+      </InfoCardLayout>
       <InfoCardLayout
         className="h-12 border-white border-1"
         title="Time Left"
-        value="2h 4m 52s"
         icon={<ClockIcon />}
-      />
+      >
+        <span className="text-base font-semibold text-white leading-none">
+          2h 4m 52s
+        </span>
+      </InfoCardLayout>
     </div>
   );
 }

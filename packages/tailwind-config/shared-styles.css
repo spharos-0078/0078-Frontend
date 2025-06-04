@@ -11,6 +11,7 @@
   --color-custom-gray-100: #b2b2b2;
   --color-custom-gray-200: #a5a5a5;
   --color-custom-gray-300: #9c9c9c;
+  --color-custom-skyblue: #f5f5fd;
 }
 
 @source "../../apps/**/*.{js,ts,jsx,tsx}";
